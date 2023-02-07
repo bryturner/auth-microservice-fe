@@ -1,1 +1,81 @@
-<p>register works!</p>
+<div class="form-container">
+  <h1 class="form-header">Register</h1>
+  <div class="form-input-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        [formControl]="emailFC"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error
+        *ngIf="emailFC.hasError('email') && !emailFC.hasError('required')"
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFC.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        [formControl]="passwordFC"
+        #passwordInput
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword"
+      >
+        <mat-icon>{{
+          hidePassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Re-enter your password</mat-label>
+      <input
+        matInput
+        [type]="hideVerifyPassword ? 'password' : 'text'"
+        [formControl]="verifyPasswordFC"
+        #verifyPasswordInput
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hideVerifyPassword = !hideVerifyPassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hideVerifyPassword"
+      >
+        <mat-icon>{{
+          hideVerifyPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          passwordFC.touched &&
+          verifyPasswordFC.touched &&
+          passwordInput.value !== verifyPasswordInput.value
+        "
+        >Passwords do not match</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="form-button-container">
+    <button mat-raised-button color="primary">Register</button>
+    <p class="form-button-text">
+      Already registered?
+      <button class="button-text" (click)="ui.navigateToPage(Page.Login)">
+        Log in here.
+      </button>
+    </p>
+  </div>
+</div>

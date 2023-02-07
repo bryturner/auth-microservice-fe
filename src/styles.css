@@ -1,4 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 62.5%;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 3rem;
+  margin-top: 6rem;
+  border: 1px solid #999;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}

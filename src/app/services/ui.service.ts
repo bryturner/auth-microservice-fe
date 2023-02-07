@@ -7,7 +7,8 @@ import { Page } from '../enums/PageEnum';
 })
 export class UiService {
   public Page = Page;
-  private currentPage = Page.Login;
+  private currentPage = Page.Register;
+  public loading: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -17,5 +18,9 @@ export class UiService {
 
   public getCurrentPage(): Page {
     return this.currentPage;
+  }
+
+  public getIsLoading(): boolean {
+    return this.loading;
   }
 }
