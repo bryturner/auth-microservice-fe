@@ -25,7 +25,7 @@
         matInput
         [type]="hidePassword ? 'password' : 'text'"
         [formControl]="passwordFC"
-        #passwordInput
+        [errorStateMatcher]="matcher"
       />
       <button
         mat-icon-button
@@ -46,7 +46,7 @@
         matInput
         [type]="hideVerifyPassword ? 'password' : 'text'"
         [formControl]="verifyPasswordFC"
-        #verifyPasswordInput
+        [errorStateMatcher]="matcher"
       />
       <button
         mat-icon-button
@@ -60,11 +60,7 @@
         }}</mat-icon>
       </button>
       <mat-error
-        *ngIf="
-          passwordFC.touched &&
-          verifyPasswordFC.touched &&
-          passwordInput.value !== verifyPasswordInput.value
-        "
+        *ngIf="verifyPasswordFC.touched && passwordFC !== verifyPasswordFC"
         >Passwords do not match</mat-error
       >
     </mat-form-field>

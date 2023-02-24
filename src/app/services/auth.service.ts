@@ -26,7 +26,9 @@ export class AuthService {
     this.ui.navigateToPage(Page.Login);
   }
 
-  public tryRegister(): void {}
+  public tryRegister(username: string, password: string): void {
+    // this.http.post();
+  }
 
-  public tryLogin(): void {}
+  public tryLogin(username: string, password: string): void {}
 }
